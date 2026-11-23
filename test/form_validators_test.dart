@@ -138,15 +138,5 @@ void main() {
       // Assert
       expect(resultado, 'Este campo es obligatorio');
     });
-        test('12. FALLA INTENCIONALMENTE: acepta un correo inválido', () {
-      // Arrange
-      const email = 'correo-invalido';
-
-      // Act
-      final resultado = FormValidators.validateEmail(email);
-
-      // Assert
-      expect(resultado, isNull);
-    });
-  });
+         });
 }
