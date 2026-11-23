@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:reportes_ciudadanos/main.dart';
+import 'package:reportes_ciudadanos/screens/auth/welcome_screen.dart';
+import 'package:flutter/material.dart';
 
 Future<void> tocarElementoVisible(
   WidgetTester tester,
@@ -13,7 +14,11 @@ Future<void> tocarElementoVisible(
 
 void main() {
   testWidgets('La bienvenida muestra acceso y registro', (tester) async {
-    await tester.pumpWidget(const ReportesCiudadanosApp());
+    await tester.pumpWidget(
+  const MaterialApp(
+    home: WelcomeScreen(),
+  ),
+);
 
     expect(find.text('REPORTES CIUDADANOS'), findsOneWidget);
     expect(find.text('Iniciar sesión'), findsOneWidget);
@@ -22,7 +27,11 @@ void main() {
 
   testWidgets('El formulario de acceso valida correo y contraseña',
       (tester) async {
-    await tester.pumpWidget(const ReportesCiudadanosApp());
+    await tester.pumpWidget(
+  const MaterialApp(
+    home: WelcomeScreen(),
+  ),
+);
 
     await tocarElementoVisible(
       tester,
@@ -40,7 +49,11 @@ void main() {
 
   testWidgets('El registro solicita nombre y contraseña segura',
       (tester) async {
-    await tester.pumpWidget(const ReportesCiudadanosApp());
+    await tester.pumpWidget(
+  const MaterialApp(
+    home: WelcomeScreen(),
+  ),
+);
 
     await tocarElementoVisible(
       tester,

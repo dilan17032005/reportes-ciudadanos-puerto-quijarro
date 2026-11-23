@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
 import '../../core/config/supabase_config.dart';
+import '../../core/validators/form_validators.dart';
+
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key, this.register = false});
   final bool register;
@@ -33,9 +34,9 @@ class _AuthScreenState extends State<AuthScreen> {
     super.dispose();
   }
 
-  String? _required(String? value) =>
-      value == null || value.trim().isEmpty ? 'Este campo es obligatorio' : null;
-
+String? _required(String? value) {
+  return FormValidators.validateRequired(value);
+}
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
     if (!SupabaseConfig.isConfigured) {
@@ -127,17 +128,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         decoration: const InputDecoration(
                             labelText: 'Correo electrónico',
                             prefixIcon: Icon(Icons.email_outlined)),
-                        validator: (value) {
-                          if (value == null || value.trim().isEmpty) {
-                            return 'Ingresa tu correo electrónico';
-                          }
-                          if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$')
-                              .hasMatch(value.trim())) {
-                            return 'Ingresa un correo válido';
-                          }
-                          return null;
-                        },
-                      ),
+validator: FormValidators.validateEmail,                      ),
                       const SizedBox(height: 14),
                       TextFormField(
                         controller: _password,
@@ -156,16 +147,12 @@ class _AuthScreenState extends State<AuthScreen> {
                                 : Icons.visibility_off_outlined),
                           ),
                         ),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return 'Ingresa tu contraseña';
-                          }
-                          if (_register && value.length < 8) {
-                            return 'Usa al menos 8 caracteres';
-                          }
-                          return null;
-                        },
-                      ),
+validator: (value) {
+  return FormValidators.validatePassword(
+    value,
+    register: _register,
+  );
+},                      ),
                       const SizedBox(height: 22),
                       SizedBox(
                         height: 52,

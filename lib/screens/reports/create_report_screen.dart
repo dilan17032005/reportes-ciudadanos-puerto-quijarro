@@ -4,6 +4,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/validators/form_validators.dart';
+
 class CreateReportScreen extends StatefulWidget {
   const CreateReportScreen({super.key});
 
@@ -273,7 +275,7 @@ Future<void> _pickCameraPhoto() async {
                   controller: _title,
                   maxLength: 100,
                   decoration: const InputDecoration(labelText: 'Título del problema', hintText: 'Ej. Poste de luz apagado', prefixIcon: Icon(Icons.title)),
-                  validator: (value) => value == null || value.trim().length < 5 ? 'Escribe un título de al menos 5 caracteres' : null,
+                  validator: FormValidators.validateReportTitle,
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
@@ -282,7 +284,7 @@ Future<void> _pickCameraPhoto() async {
                   maxLines: 7,
                   maxLength: 1500,
                   decoration: const InputDecoration(labelText: 'Descripción', alignLabelWithHint: true, hintText: 'Indica dónde ocurre y por qué es un problema...'),
-                  validator: (value) => value == null || value.trim().length < 15 ? 'Describe el problema con al menos 15 caracteres' : null,
+                  validator: FormValidators.validateReportDescription,
                 ),
                const Text(
   'Fotografías del problema',
