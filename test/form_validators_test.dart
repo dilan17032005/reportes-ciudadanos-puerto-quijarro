@@ -139,4 +139,38 @@ void main() {
       expect(resultado, 'Este campo es obligatorio');
     });
          });
+      test('12. Acepta correo con espacios alrededor', () {
+    // Arrange
+    const email = ' usuario@gmail.com ';
+
+    // Act
+    final resultado = FormValidators.validateEmail(email);
+
+    // Assert
+    expect(resultado, isNull);
+  });
+  test('13. Rechaza un correo electrónico nulo', () {
+    // Arrange
+    const String? email = null;
+
+    // Act
+    final resultado = FormValidators.validateEmail(email);
+
+    // Assert
+    expect(resultado, 'Ingresa tu correo electrónico');
+  });
+  test('14. Rechaza una descripción nula', () {
+    // Arrange
+    const String? descripcion = null;
+
+    // Act
+    final resultado =
+        FormValidators.validateReportDescription(descripcion);
+
+    // Assert
+    expect(
+      resultado,
+      'Describe el problema con al menos 15 caracteres',
+    );
+  });
 }
