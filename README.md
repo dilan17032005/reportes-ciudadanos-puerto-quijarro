@@ -1,5 +1,9 @@
 # Reportes Ciudadanos - Puerto Quijarro
 
+[![Pruebas automatizadas Flutter](https://github.com/dilan17032005/reportes-ciudadanos-puerto-quijarro/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/dilan17032005/reportes-ciudadanos-puerto-quijarro/actions/workflows/ci.yml)
+
+Estado del pipeline de pruebas automatizadas.
+
 Aplicacion desarrollada con Flutter para facilitar el registro y seguimiento de reportes ciudadanos en el municipio de Puerto Quijarro, Bolivia.
 
 El proyecto utiliza Supabase para los servicios de autenticacion y gestion de datos.
