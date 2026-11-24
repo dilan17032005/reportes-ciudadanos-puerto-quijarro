@@ -173,4 +173,28 @@ void main() {
       'Describe el problema con al menos 15 caracteres',
     );
   });
+  test('15. Rechaza un título nulo', () {
+    // Arrange
+    const String? titulo = null;
+
+    // Act
+    final resultado = FormValidators.validateReportTitle(titulo);
+
+    // Assert
+    expect(
+      resultado,
+      'Escribe un título de al menos 5 caracteres',
+    );
+  });
+
+  test('16. Rechaza un campo obligatorio nulo', () {
+    // Arrange
+    const String? nombre = null;
+
+    // Act
+    final resultado = FormValidators.validateRequired(nombre);
+
+    // Assert
+    expect(resultado, 'Este campo es obligatorio');
+  });
 }

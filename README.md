@@ -73,13 +73,13 @@ Las funciones que dependen de Supabase requieren una configuracion valida del se
 
 ## Pruebas automatizadas
 
-El proyecto cuenta con 17 pruebas automatizadas distribuidas en dos archivos.
+El proyecto cuenta con 19 pruebas automatizadas distribuidas en dos archivos.
 
 ### Pruebas de validacion
 
 Archivo: test/form_validators_test.dart
 
-Se realizan 14 pruebas:
+Se realizan 16 pruebas:
 
 1. Rechazo de correo electronico vacio.
 2. Rechazo de correo electronico con formato incorrecto.
@@ -95,6 +95,8 @@ Se realizan 14 pruebas:
 12. Aceptacion de correo electronico con espacios alrededor.
 13. Rechazo de correo electronico nulo.
 14. Rechazo de descripcion nula.
+15. Rechazo de titulo nulo.
+16. Rechazo de campo obligatorio nulo.
 
 ### Pruebas de interfaz
 
@@ -120,7 +122,7 @@ Mostrar los nombres de las pruebas:
 
     flutter test --reporter expanded
 
-Ultimo resultado verificado: 17 pruebas aprobadas y ninguna fallida.
+Ultimo resultado verificado: 19 pruebas aprobadas y ninguna fallida.
 
 ## Integracion continua (CI/CD)
 
